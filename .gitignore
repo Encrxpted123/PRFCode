@@ -1,0 +1,51 @@
+# ===== OS =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Editors / IDEs =====
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ===== Build files =====
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.dll
+*.so
+*.a
+*.lib
+
+# ===== C / C++ =====
+*.i
+*.ii
+*.d
+*.map
+
+# ===== Logs =====
+*.log
+
+# ===== Temporary files =====
+*.tmp
+*.temp
+*.bak
+*.old
+*~
+
+# ===== Archives =====
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+
+# ===== Environment files =====
+.env
+.env.local
+
+# ===== Git =====
+.gitignore
