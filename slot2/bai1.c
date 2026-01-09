@@ -1,7 +1,10 @@
 #include <stdio.h>
 int main(){
-	int a;
-	scanf("%d",&a);
-	printf("Nhap: %d",a);
-	return 0;
+	float a; //Khai báo
+	int b;
+	scanf("%f",&a); //khởi tạo, ghi
+	scanf("%d",&b);
+	printf("Xuat: %f\n",a); //In
+	printf("%d",b);
+	return 0; //Kết
 }
