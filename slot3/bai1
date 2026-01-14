@@ -6,8 +6,13 @@ int main()
     int b = 2;
     printf("%d\n", a);
     printf("%d\n", b);
-    printf("%d + %d = %d\n", a, b, a + b);
-    printf("%d - %d = %d\n", a, b, a - b);
-    printf("%d * %d = %d\n", a, b, a * b);
-    printf("%d / %d = %d\n", a, b, a / b);
+    float kq;
+    kq = a + b;
+    printf("%d + %d = %f\n", a, b, kq);
+    kq = a - b;
+    printf("%d - %d = %f\n", a, b, kq);
+    kq = a * b;
+    printf("%d * %d = %f\n", a, b, kq);
+    kq = a / b;
+    printf("%d / %d = %f\n", a, b, kq);
 }
