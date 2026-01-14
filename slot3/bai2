@@ -1,0 +1,7 @@
+#include <stdio.h>
+int main (){
+    char kt;
+    scanf("%c", &kt);
+    printf("%c %d %x %o\n", kt, kt, kt, kt);
+    printf("kích thước dữ liệu: %zu byte", sizeof(kt));
+}
