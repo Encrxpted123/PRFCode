@@ -1,7 +1,15 @@
 #include <stdio.h>
 int main (){
-	int a; //khởi tạo giá trị a
-	scanf("%d", &a); //nhập giá trị a
-	printf("%d",a); //in giá trị a
-	return 0; //kết thúc
+	int a,b,kq; //khởi tạo giá trị a
+	printf("nhap a,b: ");
+	kq = scanf("%d%d", &a,&b);
+	if (kq>0){
+		printf("a= %d, b= %d\n",a,b); //in giá trị a
+		printf("yes");
+}
+	else{
+	printf("kq= %d\n",kq); //in giá trị b
+	printf("no");
+	}
+	return 0;
 }
