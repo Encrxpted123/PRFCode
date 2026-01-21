@@ -1,16 +1,16 @@
 #include <stdio.h>
 int main(){
-	int N, T;
+	int N, t;
 	printf("Nhap N: ");
 	scanf("%d",&N);
 	if (N<100)
-		T=950*N;
+		t=950*N;
 	else if (N>=200)
-		T=1550*N;
+		t=1550*N;
 	else if (N>=150)
-		T=1350*N;
+		t=1350*N;
 	else if (N>=100)
-		T=1250*N;
-	printf("So tien la: %d",T);
+		t=1250*N;
+	printf("So tien la: %d",t);
 	return 0;
 }
