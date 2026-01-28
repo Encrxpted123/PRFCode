@@ -3,11 +3,20 @@ int main(){
 	float cc,gk,ck,tong;
 	char chu;
 	printf("Nhap diem chuyen can: ");
-	scanf("%f",&cc);
+	if (scanf("%f",&cc) != 1 || cc <0){
+		print("Nhap sai diem!");
+		return 0;
+	};
 	printf("Nhap diem giua ki: ");
-	scanf("%f",&gk);
+	if (scanf("%f",&gk) != 1 || gk <0){
+		print("Nhap sai diem!");
+		return 0;
+	};
 	printf("Nhap diem cuoi ki: ");
-	scanf("%f",&ck);
+	if (scanf("%f",&ck) != 1 || ck <0){
+		print("Nhap sai diem!");
+		return 0;
+	};
 	tong = cc*0.1 + gk*0.3 + ck*0.6;
 	if (tong>=8.5)
 		chu = 'A';
