@@ -9,13 +9,13 @@ int main(){
 	printf("Nhap diem cuoi ki: ");
 	scanf("%f",&ck);
 	tong = cc*0.1 + gk*0.3 + ck*0.6;
-	if (tong>=8)
+	if (tong>=8.5)
 		chu = 'A';
-	else if (tong>=6)
+	else if (tong>=7)
 		chu = 'B';
-	else if (tong>=4)
+	else if (tong>=5.5)
 		chu = 'C';
-	else if (tong>=2)
+	else if (tong>=4)
 		chu = 'D';
 	else
 		chu = 'F';
