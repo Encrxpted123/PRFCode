@@ -3,17 +3,17 @@ int main(){
 	float cc,gk,ck,tong;
 	char chu;
 	printf("Nhap diem chuyen can: ");
-	if (scanf("%f",&cc) != 1 || cc <0){
+	if (scanf("%f",&cc) != 1 || cc <0 || cc >10){
 		print("Nhap sai diem!");
 		return 0;
 	};
 	printf("Nhap diem giua ki: ");
-	if (scanf("%f",&gk) != 1 || gk <0){
+	if (scanf("%f",&gk) != 1 || gk <0 || gk >10){
 		print("Nhap sai diem!");
 		return 0;
 	};
 	printf("Nhap diem cuoi ki: ");
-	if (scanf("%f",&ck) != 1 || ck <0){
+	if (scanf("%f",&ck) != 1 || ck <0 || ck >10){
 		print("Nhap sai diem!");
 		return 0;
 	};
