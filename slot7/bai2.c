@@ -3,11 +3,7 @@
 int main(){
 	int a,b;
 	char pt; 
-	if (scanf("%d",&a) != 1){
-		printf("Nhap sai!");
-		return 0;
-	}
-	if (scanf("%d",&b) != 1){
+	if (scanf("%d,%d",&a,&b) != 2){
 		printf("Nhap sai!");
 		return 0;
 	}
