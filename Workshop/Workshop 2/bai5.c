@@ -4,11 +4,14 @@
 int main(){
 	int n,sum;
 	printf("Nhap n: ");
-	while(scanf("%d",&n)==1 && n!=0){
+	for(;;){
+		if(scanf("%d",&n)==1 && n!=0){
 		sum = sum + n;
 		printf("%d\n",sum);
 		printf("Nhap n: ");
 		fflush(stdin);
+		}
+		else break;
 	}
 	return 0;
 }

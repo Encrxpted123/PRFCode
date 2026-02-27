@@ -5,9 +5,12 @@ int main() {
     int n,i = 0;
     printf("Nhap n: ");
 
-	while (scanf("%d", &n) != 1){
-		printf("Nhap n: ");
-		fflush(stdin);
+	for(;;){
+		if(scanf("%d", &n) != 1){
+			printf("Nhap n: ");
+			fflush(stdin);
+		}
+		else break;
 	}
 	
 	if (n<0){

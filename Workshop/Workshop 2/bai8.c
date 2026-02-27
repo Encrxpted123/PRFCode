@@ -22,7 +22,7 @@ int main() {
 		b = temp;
 	}
 	
-	while (b!=0){ //Euclid
+	for (;b!=0;){ //Euclid
 		c = a%b;
 		a=b;
 		b=c;
