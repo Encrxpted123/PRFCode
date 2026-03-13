@@ -1,4 +1,4 @@
-#include <stdio.h>
+	#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
@@ -40,16 +40,23 @@ int main() {
   system("cls");
   printf("INPUT:\n");	
   //INPUT - @STUDENT:ADD YOUR CODE FOR INPUT HERE:
-  	int a[ROWS][COLS],result[ROWS][COLS];
+  	int a[ROWS][COLS],result[ROWS][COLS],invalid=0;
 	for (int i=0;i<ROWS;i++){
   		for(int j=0;j<COLS;j++){
   			while(scanf("%d",&a[i][j])!=1){
-  				fflush(stdin);
+  				i = 4;
+  				j = 4;
+  				invalid=1;
+				break;
 			  }
 		  }
 	  }
     // OUTPUT: Hiển thị kết quả ra màn hình
     printf("\nOUTPUT:\n");
+    if(invalid==1){
+    	printf("Invalid input.");
+    	return 0;
+	}
     findRowMin(a,result);
     displayResults(result);
 	return 0;
