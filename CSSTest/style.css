@@ -1,0 +1,74 @@
+﻿body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* họ phông chữ */
+  font-size: 150%;                                               /* kích thước phông chữ */
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #222;
+}
+
+/* === Quy tắc cho thẻ tiêu đề (header) === */
+header {
+  background-color: #2c3e50; /* màu nền */
+  padding: 20px 40px;
+  color: #fff;
+}
+
+/* === Quy tắc cho thẻ nav === */
+nav {
+  background-color: #1a252f; /* màu nền */
+  padding: 10px 40px;
+}
+
+nav a {
+  color: #ecf0f1;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 15px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* === Quy tắc cho thẻ chính (main) === */
+main {
+  background-color: #ffffff; /* màu nền */
+  font-size: 15px;            /* kích thước phông chữ */
+  padding: 30px 40px;
+  max-width: 960px;
+  margin: 20px auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* === Quy tắc cho thẻ chân trang (footer) === */
+footer {
+  background-color: #2c3e50; /* màu nền */
+  padding: 16px 40px;
+  color: #bdc3c7;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* === Quy tắc cho thẻ li === */
+li {
+  display: list-item;         /* thuộc tính hiển thị */
+  width: 80%;                 /* chiều rộng */
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* === Quy tắc cho thẻ h1 === */
+h1 {
+  text-align: center;                          /* căn chỉnh văn bản */
+  font-family: 'Georgia', 'Times New Roman', serif; /* họ phông chữ */
+  color: #e74c3c;                              /* màu sắc */
+  margin-top: 0;
+}
+
+/* === Quy tắc cho thẻ p === */
+p {
+  line-height: 1.9; /* chiều cao dòng */
+  margin-bottom: 14px;
+}
