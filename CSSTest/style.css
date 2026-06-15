@@ -14,10 +14,12 @@ header {
   color: #fff;
 }
 
-/* === Quy tắc cho thẻ nav === */
+/* === Quy tắc cho thẻ nav (Câu 4: Sử dụng khối nội tuyến inline-block và chiều rộng 80%) === */
 nav {
   background-color: #1a252f; /* màu nền */
   padding: 10px 40px;
+  display: inline-block;     /* kiểu hiển thị khối nội tuyến */
+  width: 80%;                /* chiều rộng khoảng 80% */
 }
 
 nav a {
@@ -29,6 +31,11 @@ nav a {
 
 nav a:hover {
   text-decoration: underline;
+}
+
+/* === Câu 5: Bộ chọn hậu duệ định kiểu cho hình ảnh trong điều hướng (nav img) === */
+nav img {
+  width: 10%; /* chiều rộng khoảng 10% */
 }
 
 /* === Quy tắc cho thẻ chính (main) === */
@@ -51,12 +58,12 @@ footer {
   font-size: 13px;
 }
 
-/* === Quy tắc cho thẻ li === */
+/* === Quy tắc cho thẻ li (Câu 3: Nhận xét kiểu dáng hiện có) === */
 li {
-  display: list-item;         /* thuộc tính hiển thị */
-  width: 80%;                 /* chiều rộng */
-  margin-bottom: 8px;
-  line-height: 1.6;
+  display: list-item;         /* Thuộc tính hiển thị: dạng mục danh sách có dấu đầu dòng */
+  width: 80%;                 /* Chiều rộng: chiếm 80% chiều rộng của phần tử cha chứa nó */
+  margin-bottom: 8px;         /* Khoảng cách lề dưới: tạo khoảng trống 8px với phần tử li kế tiếp */
+  line-height: 1.6;           /* Chiều cao dòng: khoảng cách giãn dòng văn bản bằng 1.6 lần cỡ chữ */
 }
 
 /* === Quy tắc cho thẻ h1 === */
@@ -71,4 +78,25 @@ h1 {
 p {
   line-height: 1.9; /* chiều cao dòng */
   margin-bottom: 14px;
+}
+
+/* === Câu 6 & Câu 8: Định kiểu cho lớp lưới (.luoi) sử dụng hai cột === */
+.luoi {
+  display: grid;                                      /* Sử dụng bố cục lưới */
+  grid-template-columns: repeat(2, 40%);              /* Lưới hai cột, mỗi cột xấp xỉ 40% */
+  justify-content: space-between;                     /* Căn đều các cột sang hai bên biên */
+  align-items: center;                                /* Căn giữa các phần tử trong lưới theo chiều dọc */
+  row-gap: 20px;                                      /* Khoảng cách giữa các hàng */
+}
+
+/* === Câu 7: Bộ chọn hậu duệ định kiểu cho hình ảnh trong lớp lưới (.luoi img) === */
+.luoi img {
+  width: 100%; /* chiều rộng 100% để vừa khít cột lưới */
+}
+
+/* === Câu 9: Định kiểu cho lớp flex (.flex) sử dụng bố cục flexbox === */
+.flex {
+  display: flex;                /* Sử dụng bố cục hộp linh hoạt */
+  flex-wrap: wrap;              /* Cho phép các phần tử tự động xuống hàng khi thiếu không gian */
+  justify-content: center;      /* Căn giữa các phần tử theo trục ngang */
 }
