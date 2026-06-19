@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<title>Rollover Image - Bài tập</title>
+<style>
+  :root {
+    --ink: #1f2430;
+    --paper: #f6f4ef;
+    --accent: #c2562d;
+    --line: #d8d3c5;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: "Georgia", "Times New Roman", serif;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 40px 20px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  p.lead {
+    text-align: center;
+    color: #6b6457;
+    margin-top: 0;
+    margin-bottom: 32px;
+    font-size: 0.95rem;
+  }
+
+  .stage {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .preview {
+    border: 1px solid var(--line);
+    background: #fff;
+    padding: 16px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  #PreviewPic {
+    max-width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+  }
+
+  #PreviewPic.placeholder {
+    height: 320px;
+    width: 100%;
+    background: repeating-linear-gradient(
+      45deg, #efe9da, #efe9da 10px, #e6dfcb 10px, #e6dfcb 20px
+    );
+  }
+
+  #caption {
+    margin-top: 12px;
+    font-style: italic;
+    color: #4a4536;
+    font-size: 0.95rem;
+    min-height: 1.4em;
+  }
+
+  .thumbs {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .thumbs a {
+    display: block;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .thumbs a:hover,
+  .thumbs a:focus {
+    border-color: var(--accent);
+  }
+
+  .thumbs img {
+    width: 110px;
+    height: 80px;
+    object-fit: cover;
+    display: block;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 0.8rem;
+    color: #999;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Hội An — Rollover Image</h1>
+  <p class="lead">Di chuột qua từng ảnh nhỏ bên dưới để xem trước</p>
+
+  <div class="stage">
+    <div class="preview">
+      <!--
+        Bước 2: id và alt của hình ảnh chính (#PreviewPic).
+        alt rỗng ban đầu vì chưa có ảnh nào được chọn.
+      -->
+      <img id="PreviewPic" class="placeholder" src="" alt="" />
+      <p id="caption">Di chuột qua một hình ảnh bên dưới để hiển thị ở đây.</p>
+    </div>
+
+    <div class="thumbs">
+      <!--
+        Mỗi liên kết gọi UPdate('url-ảnh-lớn', 'mô tả nguồn') khi hover vào,
+        và gọi undo() khi rời chuột ra.
+      -->
+      <a href="#"
+         onmouseover="UPdate('https://images.unsplash.com/photo-1528127269322-539801943592?w=900&q=80','Phố cổ Hội An về đêm, đèn lồng thắp sáng dọc bờ sông.')"
+         onmouseout="undo()">
+        <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=200&q=60" alt="Phố cổ Hội An" />
+      </a>
+
+      <a href="#"
+         onmouseover="UPdate('https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=900&q=80','Chùa Cầu, biểu tượng kiến trúc nổi tiếng của Hội An.')"
+         onmouseout="undo()">
+        <img src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=200&q=60" alt="Chùa Cầu" />
+      </a>
+
+      <a href="#"
+         onmouseover="UPdate('https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=900&q=80','Thuyền thúng truyền thống trên sông Thu Bồn.')"
+         onmouseout="undo()">
+        <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=200&q=60" alt="Thuyền thúng" />
+      </a>
+
+      <a href="#"
+         onmouseover="UPdate('https://images.unsplash.com/photo-1583395226798-26c2b3b46f8a?w=900&q=80','Đèn lồng nhiều màu sắc được bán dọc các con phố.')"
+         onmouseout="undo()">
+        <img src="https://images.unsplash.com/photo-1583395226798-26c2b3b46f8a?w=200&q=60" alt="Đèn lồng" />
+      </a>
+    </div>
+  </div>
+
+  <footer>Bài tập JavaScript: rollover image + undo</footer>
+
+<script>
+  // Lưu lại giá trị gốc một lần, để undo() luôn biết phải trở về đâu.
+  var originalCaption = "Di chuột qua một hình ảnh bên dưới để hiển thị ở đây.";
+
+  // BƯỚC 3: hàm UPdate — chạy khi chuột di vào một ảnh nhỏ
+  function UPdate(src, sourceText) {
+    // 3a. console.log để chắc chắn sự kiện mouseover thực sự kích hoạt
+    console.log("UPdate() được gọi");
+
+    // 3b. console.log để xem giá trị alt/src hiện tại của #PreviewPic trước khi đổi
+    var pic = document.getElementById("PreviewPic");
+    console.log("alt hiện tại:", pic.alt, "| src hiện tại:", pic.src);
+
+    // 3c. Đổi src và alt của ảnh lớn theo ảnh vừa hover
+    pic.src = src;
+    pic.alt = sourceText;
+    pic.classList.remove("placeholder");
+
+    // 3e. Đổi văn bản chú thích theo nguồn ảnh
+    document.getElementById("caption").textContent = sourceText;
+
+    // 3f. console.log thêm để kiểm tra giá trị sau khi đổi
+    console.log("Đã đổi sang:", src);
+  }
+
+  // BƯỚC 4: hàm undo — chạy khi chuột rời khỏi ảnh nhỏ
+  function undo() {
+    console.log("undo() được gọi");
+
+    var pic = document.getElementById("PreviewPic");
+
+    // 4a. Trả src của ảnh lớn về giá trị ban đầu: url('')
+    pic.src = "";
+    pic.alt = "";
+    pic.classList.add("placeholder");
+
+    // 4b. Trả văn bản chú thích về câu gốc
+    document.getElementById("caption").textContent = originalCaption;
+  }
+</script>
+
+</body>
+</html>
