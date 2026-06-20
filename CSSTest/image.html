@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Bài tập: Gallery ảnh hover (UPdate / Undo)</title>
+<style>
+  :root {
+    --bg: #1b1d22;
+    --panel: #25282f;
+    --accent: #e8a23d;
+    --text: #eceef1;
+    --muted: #9aa0ab;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--text);
+    padding: 32px 16px;
+  }
+
+  .gallery-container {
+    width: 100%;
+    max-width: 760px;
+  }
+
+  h1 {
+    font-size: 22px;
+    margin: 0 0 18px;
+    text-align: center;
+    color: var(--text);
+  }
+
+  /* Khu vực hiển thị ảnh xem trước (preview) - đây là phần tử có id="image" */
+  #image {
+    width: 100%;
+    height: 360px;
+    border-radius: 12px;
+    background-color: var(--panel);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end;
+    transition: background-image 0.15s ease-in-out;
+    overflow: hidden;
+    border: 1px solid #34373f;
+  }
+
+  /* Lớp phủ chứa văn bản mô tả (caption) nằm bên trong #image */
+  #caption {
+    margin: 0;
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 15px;
+    color: #fff;
+    background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0));
+  }
+
+  /* Dải ảnh thu nhỏ (thumbnails) */
+  .thumbnails {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .thumb {
+    width: 110px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+
+  .thumb:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .hint {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 14px;
+  }
+</style>
+</head>
+<body>
+
+<div class="gallery-container">
+  <h1>Di chuột qua ảnh bên dưới để xem trước</h1>
+
+  <!-- Bước 3: phần tử có id="image" - nơi sẽ đổi hình nền (background-image) -->
+  <div id="image">
+    <!-- Phần tử văn bản mô tả - sẽ bị đổi nội dung khi UPdate chạy -->
+    <p id="caption">Di chuột qua một hình ảnh bên dưới để hiển thị ở đây.</p>
+  </div>
+
+  <!-- Dải thumbnail: mỗi ảnh có id riêng, thuộc tính alt (mô tả) và data-full (ảnh lớn) -->
+  <div class="thumbnails">
+    <img id="pic1" class="thumb"
+         src="https://picsum.photos/id/1015/160/110"
+         data-full="https://picsum.photos/id/1015/1000/650"
+         alt="Hồ nước trong xanh giữa núi rừng"
+         onmouseover="UPdate(event)" onmouseout="Undo()">
+
+    <img id="pic2" class="thumb"
+         src="https://picsum.photos/id/1018/160/110"
+         data-full="https://picsum.photos/id/1018/1000/650"
+         alt="Con đường nhỏ xuyên qua thảo nguyên"
+         onmouseover="UPdate(event)" onmouseout="Undo()">
+
+    <img id="pic3" class="thumb"
+         src="https://picsum.photos/id/1019/160/110"
+         data-full="https://picsum.photos/id/1019/1000/650"
+         alt="Dòng sông uốn quanh dãy núi"
+         onmouseover="UPdate(event)" onmouseout="Undo()">
+
+    <img id="pic4" class="thumb"
+         src="https://picsum.photos/id/1039/160/110"
+         data-full="https://picsum.photos/id/1039/1000/650"
+         alt="Ngọn hải đăng bên bờ biển"
+         onmouseover="UPdate(event)" onmouseout="Undo()">
+
+    <img id="pic5" class="thumb"
+         src="https://picsum.photos/id/1043/160/110"
+         data-full="https://picsum.photos/id/1043/1000/650"
+         alt="Đỉnh núi phủ tuyết trắng"
+         onmouseover="UPdate(event)" onmouseout="Undo()">
+  </div>
+
+  <p class="hint">Mở Console (F12) để xem log khi hover từng ảnh.</p>
+</div>
+
+<script>
+  // Văn bản mặc định ban đầu - dùng lại trong hàm Undo()
+  const DEFAULT_CAPTION = "Di chuột qua một hình ảnh bên dưới để hiển thị ở đây.";
+
+  /* ----------------------------------------------------------------
+     BƯỚC 3: Hàm UPdate - chạy khi onmouseover trên một thumbnail
+  ---------------------------------------------------------------- */
+  function UPdate(event) {
+    // 3.a) console.log đầu tiên: kiểm tra sự kiện có kích hoạt không
+    console.log("UPdate được gọi - event type:", event.type);
+
+    // Ảnh thumbnail đang được hover chính là event.target
+    const hoveredImg = event.target;
+
+    // 3.b) console.log thông tin biến PreviewPic: in ra alt và src (ở đây dùng data-full)
+    console.log("alt:", hoveredImg.alt, "| src:", hoveredImg.src, "| full:", hoveredImg.dataset.full);
+
+    // 3.c) Dùng getElementById để đổi văn bản của phần tử mô tả (#caption)
+    document.getElementById("caption").textContent = hoveredImg.alt;
+
+    // 3.e) Dùng getElementById để đổi hình nền của phần tử #image
+    document.getElementById("image").style.backgroundImage =
+      "url('" + hoveredImg.dataset.full + "')";
+  }
+
+  /* ----------------------------------------------------------------
+     BƯỚC 4: Hàm Undo - chạy khi onmouseout, trả mọi thứ về ban đầu
+  ---------------------------------------------------------------- */
+  function Undo() {
+    console.log("Undo được gọi - trả về trạng thái mặc định");
+
+    // 4.a) Trả hình nền của #image về giá trị ban đầu: url('')
+    document.getElementById("image").style.backgroundImage = "url('')";
+
+    // 4.b) Trả văn bản mô tả về câu gốc
+    document.getElementById("caption").textContent = DEFAULT_CAPTION;
+  }
+</script>
+
+</body>
+</html>
