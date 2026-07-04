@@ -1,0 +1,98 @@
+﻿/* ---------- Base / Reset ---------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5f5f5;
+  color: #222;
+}
+
+header {
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin-bottom: 10px;
+}
+
+/* ---------- Mobile-first Gallery (default) ---------- */
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 10px;
+}
+
+.gallery-item {
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  color: #222;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.gallery-item figcaption {
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+/* ---------- Tablet view: activates at 772px ---------- */
+@media (min-width: 772px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gallery-item img {
+    border-radius: 20px;
+  }
+
+  .gallery-item:last-child {
+    grid-column: 1 / 3;
+  }
+}
+
+/* ---------- Desktop view: activates at 992px ---------- */
+@media (min-width: 992px) {
+  .gallery-item:nth-child(3n) {
+    grid-column: 1 / 3;
+  }
+
+  .gallery-item img {
+    border-radius: 0;
+  }
+}
+
+/* ---------- Reduced motion preference ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- Dark color scheme preference ---------- */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #111;
+  }
+
+  .gallery-item {
+    background-color: #1a1a1a;
+    color: #f5e642;
+    border-color: #000;
+  }
+}
