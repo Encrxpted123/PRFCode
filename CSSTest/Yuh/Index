@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Final Project</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1 id="top">Final Project</h1>
+  </header>
+
+  <main>
+    <p>Welcome to my color gallery! This site showcases a simple grid of colors, each represented by an image and a short caption. It was built to practice responsive web design using CSS Grid and media queries.</p>
+
+    <p>As you resize the browser window, notice how the layout adapts: a single column on mobile devices, two columns on tablets with circular images, and a slightly different two-column layout on larger desktop screens. The site also supports a dark color scheme and respects reduced motion preferences.</p>
+
+    <div class = "grid">
+        <figure>
+        <img src="images/Red.jpeg" alt="Red" width="200">
+        <figcaption class="label">Red</figcaption>
+        </figure>
+        <figure>
+        <img src="images/Orange.png" alt="Orange" width="200">
+        <figcaption class="label">Orange</figcaption>
+        </figure>
+        <figure>
+        <img src="images/Yellow.png" alt="Yellow" width="200">
+        <figcaption class="label">Yellow</figcaption>
+        </figure>
+        <figure>
+        <img src="images/Green.png" alt="Green" width="200">
+        <figcaption class="label">Green</figcaption>
+        </figure>
+        <figure>
+        <img src="images/Blue.png" alt="Blue" width="200">
+        <figcaption class="label">Blue</figcaption>
+        </figure>
+        <figure>
+        <img src="images/Indigo.jpeg" alt="Indigo" width="200">
+        <figcaption class="label">Indigo</figcaption>
+        </figure>
+        <figure>
+        <img src="images/Purple.png" alt="Purple" width="200">
+        <figcaption class="label">Purple</figcaption>
+        </figure>
+        <figure>
+        <img src="images/Pink.jpeg" alt="Pink" width="200">
+        <figcaption class="label">Pink</figcaption>
+        </figure>
+        <figure>
+        <img src="images/White.png" alt="White" width="200">
+        <figcaption class="label">White</figcaption>
+        </figure>
+    </div>
+  </main>
+
+  <footer>
+    <a href="#top">Jump to the Top</a>
+  </footer>
+</body>
+
+</html>
