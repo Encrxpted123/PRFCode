@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thư viện ảnh tương tác</title>
+<style>
+  :root {
+    --gap: 12px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, Arial, sans-serif;
+    background: #111;
+    color: #eee;
+    margin: 0;
+    padding: 24px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--gap);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .gallery figure {
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #222;
+  }
+  .gallery img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.25s ease, filter 0.25s ease;
+    cursor: pointer;
+  }
+  .gallery figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;
+    font-size: 0.85rem;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  /* Trạng thái "active" được JS thêm/xóa khi hover hoặc focus */
+  .gallery img.active {
+    transform: scale(1.08);
+    filter: brightness(1.15);
+  }
+  .gallery figure.active figcaption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .gallery img:focus-visible {
+    outline: 3px solid #4da3ff;
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Thư viện ảnh tương tác</h1>
+
+<div class="gallery" id="gallery">
+  <figure>
+    <img src="https://picsum.photos/id/10/400/300" alt="Rừng và hồ nước">
+    <figcaption>Rừng và hồ nước</figcaption>
+  </figure>
+  <figure>
+    <img src="https://picsum.photos/id/29/400/300" alt="Đường mòn trong rừng">
+    <figcaption>Đường mòn trong rừng</figcaption>
+  </figure>
+  <figure>
+    <img src="https://picsum.photos/id/48/400/300" alt="Núi phủ tuyết">
+    <figcaption>Núi phủ tuyết</figcaption>
+  </figure>
+  <figure>
+    <img src="https://picsum.photos/id/76/400/300" alt="Bờ biển đá">
+    <figcaption>Bờ biển đá</figcaption>
+  </figure>
+  <figure>
+    <img src="https://picsum.photos/id/103/400/300" alt="Cánh đồng hoa">
+    <figcaption>Cánh đồng hoa</figcaption>
+  </figure>
+  <figure>
+    <img src="https://picsum.photos/id/122/400/300" alt="Hoàng hôn trên biển">
+    <figcaption>Hoàng hôn trên biển</figcaption>
+  </figure>
+</div>
+
+<script>
+// 8. Trình nghe onload - quyết định xem gọi hàm mới là gì
+window.onload = function () {
+  console.log('Trang đã tải xong. Bắt đầu khởi tạo thư viện ảnh.');
+  initGallery();
+};
+
+function initGallery() {
+  const images = document.querySelectorAll('#gallery img');
+
+  // 9c. Thêm thuộc tính tabindex
+  // 9b. Vòng lặp for để lặp qua từng hình ảnh
+  for (let i = 0; i < images.length; i++) {
+    const img = images[i];
+    img.setAttribute('tabindex', '0');
+
+    // 6. Thêm onmouseover/onmouseleave và onfocus/onblur,
+    //    dùng chung một cặp hàm xử lý cho cả hai bộ sự kiện
+    img.addEventListener('mouseover', handleActivate);
+    img.addEventListener('focus', handleActivate);
+    img.addEventListener('mouseleave', handleDeactivate);
+    img.addEventListener('blur', handleDeactivate);
+  }
+}
+
+// 9a. console.log để xác nhận sự kiện được kích hoạt
+function handleActivate(event) {
+  const img = event.currentTarget;
+  const figure = img.closest('figure');
+  img.classList.add('active');
+  figure.classList.add('active');
+  console.log('Kích hoạt (' + event.type + '):', img.alt);
+}
+
+function handleDeactivate(event) {
+  const img = event.currentTarget;
+  const figure = img.closest('figure');
+  img.classList.remove('active');
+  figure.classList.remove('active');
+  console.log('Kết thúc (' + event.type + '):', img.alt);
+}
+</script>
+
+</body>
+</html>
